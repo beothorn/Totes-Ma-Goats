@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="1000" height="1000"></canvas>
+
+<script>
+
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+context.globalCompositeOperation = 'xor'
+
+function randomIntFromInterval(min, max) { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+for(let i=0; i<randomIntFromInterval(200, 1000); i++){
+    var centerX = randomIntFromInterval(0, 1000);
+    var centerY = randomIntFromInterval(0, 1000);
+    var radius = randomIntFromInterval(10, 100);
+
+    context.beginPath();
+    context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+    context.fillStyle = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+    context.fill();
+    context.lineWidth = 5;
+    context.strokeStyle = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+    context.stroke();
+}
+
+</script>
+
+</body>
+</html>
